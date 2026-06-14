@@ -5,12 +5,12 @@
 using namespace std;
 
 void params() {
-    cout << "Выбери вариант:\n";
-    cout << "1. Добавить запись в файл.\n";
-    cout << "2. Прочитать файл.\n";
-    cout << "3. Редактировать файл.\n";
-    cout << "4. Выход.\n\n";
-    cout << "Выбор: ";
+    cout << "?????? ???????:\n";
+    cout << "1. ???????? ?????? ? ????.\n";
+    cout << "2. ????????? ????.\n";
+    cout << "3. ????????????? ????.\n";
+    cout << "4. ?????.\n\n";
+    cout << "?????: ";
 }
 
 int main()
@@ -35,10 +35,10 @@ int main()
 
             ofstream outf("text.txt", ios::app);
             if (!outf.is_open()) {
-                cout << "Ошибка открытия файла!" << endl;
+                cout << "?????? ???????? ?????!" << endl;
             }
             else {
-                cout << "\nНапиши что-то:\n";
+                cout << "\n?????? ???-??:\n";
                 string str;
                 getline(cin, str);
                 outf << str << endl;
@@ -49,7 +49,7 @@ int main()
         case 2: {
             ifstream inf("text.txt");
             if (!inf.is_open()) {
-                cout << "Ошибка открытия файла!" << endl;
+                cout << "?????? ???????? ?????!" << endl;
             }
             else {
                 vector<string> lines;
@@ -60,10 +60,10 @@ int main()
                 inf.close();
 
                 if (lines.empty()) {
-                    cout << "Файл пустой." << endl;
+                    cout << "???? ??????." << endl;
                 }
                 else {
-                    cout << "\nСодержимое файла:\n";
+                    cout << "\n?????????? ?????:\n";
                     for (size_t i = 0; i < lines.size(); ++i) {
                         cout << i + 1 << ": " << lines[i] << endl;
                     }
@@ -74,7 +74,7 @@ int main()
         case 3: {
             ifstream inf("text.txt");
             if (!inf.is_open()) {
-                cout << "Ошибка открытия файла!" << endl;
+                cout << "?????? ???????? ?????!" << endl;
                 break;
             }
 
@@ -86,28 +86,28 @@ int main()
             inf.close();
 
             if (lines.empty()) {
-                cout << "Пустой файл!" << endl;
+                cout << "?????? ????!" << endl;
                 break;
             }
 
-            cout << "\nСодержимое файла:\n";
+            cout << "\n?????????? ?????:\n";
             for (size_t i = 0; i < lines.size(); ++i) {
                 cout << i + 1 << ": " << lines[i] << endl;
             }
 
             size_t lineNumber;
-            cout << "\nВведите номер строки для редактирования (0 - выход): ";
+            cout << "\n??????? ????? ?????? ??? ?????????????? (0 - ?????): ";
             cin >> lineNumber;
             cin.ignore();
 
             if (lineNumber == 0 || lineNumber > lines.size()) {
-                cout << "Выход из редактирования или некорректный номер строки" << endl;
+                cout << "????? ?? ?????????????? ??? ???????????? ????? ??????" << endl;
                 break;
             }
 
             while (true) {
-                cout << "\nТекущая строка: " << lines[lineNumber - 1] << endl;
-                cout << "Введите новую строку (enter - выход):\n";
+                cout << "\n??????? ??????: " << lines[lineNumber - 1] << endl;
+                cout << "??????? ????? ?????? (enter - ?????):\n";
 
                 string newLine;
                 getline(cin, newLine);
@@ -121,7 +121,7 @@ int main()
 
             ofstream outf("text.txt");
             if (!outf.is_open()) {
-                cout << "Ошибка открытия файла для записи!" << endl;
+                cout << "?????? ???????? ????? ??? ??????!" << endl;
                 break;
             }
 
@@ -130,7 +130,7 @@ int main()
             }
             outf.close();
 
-            cout << "Редактирование завершено.\n";
+            cout << "?????????????? ?????????.\n";
             break;
         }
 
@@ -139,7 +139,7 @@ int main()
             break;
 
         default:
-            cout << "\nВыберите (1-4)!" << endl;
+            cout << "\n???????? (1-4)!" << endl;
         }
         cout << endl;
     }
